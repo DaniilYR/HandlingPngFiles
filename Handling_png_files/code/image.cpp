@@ -181,10 +181,9 @@ void Image::draw_c(float x1, float y1, float x2, float y2, float w, QColor color
 {
 
     if(x1 > x2)
-    {
         swap(x1,x2);
+    if(y1 > y2)
         swap(y1,y2);
-    }
 
     if(abs(x1-x2) > abs(y1-y2))
         y2 = y1 + abs(x1-x2);
@@ -255,10 +254,9 @@ void Image::draw_c(float x1, float y1, float x2, float y2, float w, QColor color
 void Image::draw_s(int x1, int y1, int x2, int y2, int w, QColor color, QColor color_z)
 {
     if(x1 > x2)
-    {
         swap(x1,x2);
+    if(y1 > y2)
         swap(y1,y2);
-    }
 
     if(abs(x1-x2) > abs(y1-y2))
         y2 = y1 + abs(x1-x2);

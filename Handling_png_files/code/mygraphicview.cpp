@@ -21,6 +21,36 @@ void MyGraphicView::mouseReleaseEvent(QMouseEvent* event)
     emit point();
 }
 
+void MyGraphicView::mouseMoveEvent(QMouseEvent *event)
+{
+    //if (button_pressed == INVERSE || button_pressed == RECTANGLE || button_pressed == ROTATE)
+    //{
+        int x1 = coordinate.x1;
+        int y1 = coordinate.y1;
+        int x2 = this->mapFromGlobal(QCursor::pos()).x();
+        int y2 = this->mapFromGlobal(QCursor::pos()).y();
+        this->deleteItemsFromGroup(group);
+        group = new QGraphicsItemGroup();
+
+        color.setRed(255);
+        color.setGreen(255);
+        color.setBlue(255);
+
+        if (x2 < 0)
+            x2 = 0;
+        if (y2 < 0)
+            y2 = 0;
+        if (x2 < x1)
+            std::swap(x1, x2);
+
+        if (y2 < y1)
+            std::swap(y1, y2);
+        int a = abs(x2-x1) > abs(y2-y1) ? abs(x2-x1) : abs(y2-y1);
+        group->addToGroup((scene->addRect(x1, y1, x2 - x1, y2 - y1, color)));
+        scene->addItem(group);
+    //}
+}
+
 void MyGraphicView::update(QPixmap pixmap)
 {
     scene = new QGraphicsScene();

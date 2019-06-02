@@ -348,6 +348,11 @@ QPixmap Image::get_pixmap()
 
 int Image::rotate(int x1,int y1, int x2, int y2, int angle){
 
+    if (x2 < x1)
+        swap(x1, x2);
+    if (y2 < y1)
+        swap(y1, y2);
+
     Pixel_t **Pixels2 = static_cast<Pixel_t **>(malloc(sizeof(Pixel_t *) * Bitmap.height));
     for (png_uint_32 i = 0; i < Bitmap.height; i++)
     {
@@ -496,10 +501,10 @@ int Image::rotate(int x1,int y1, int x2, int y2, int angle){
 
 void Image::negativ_RGB(int x1, int y1, int x2, int y2){
 
-    /*if (x2 < x1)
-        std::swap(x1, x2);
+    if (x2 < x1)
+        swap(x1, x2);
     if (y2 < y1)
-        std::swap(y1, y2);*/
+        swap(y1, y2);
 
     for (int y = y1; y < y2; y++) {
         for (int x = x1; x < x2; x++) {

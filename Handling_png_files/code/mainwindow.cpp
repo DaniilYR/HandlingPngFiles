@@ -174,8 +174,6 @@ void MainWindow::ds()
         }
     if(pr->check)
     {
-        flag = 0;
-        d->f = 0;
         image->rotate(x1, y1, x2, y2, pr->angle);
         picture->update(image->get_pixmap());
         ui->gridLayout->addWidget(picture);
@@ -184,28 +182,26 @@ void MainWindow::ds()
     }
     if(d->f == 1)
     {
-         image->draw_c(x1, y1, x2, y2, d->thick, d->color, d->color_z);
-         picture->update(image->get_pixmap());
-         ui->gridLayout->addWidget(picture);
-         //d->f = 0;
-         return;
+        image->draw_c(x1, y1, x2, y2, d->thick, d->color, d->color_z);
+        picture->update(image->get_pixmap());
+        ui->gridLayout->addWidget(picture);
+        d->f = 0;
+        return;
     }
     if(d->f == 2)
     {
         image->draw_s(x1, y1, x2, y2, d->thick, d->color, d->color_z);
         picture->update(image->get_pixmap());
         ui->gridLayout->addWidget(picture);
-        //d->f = 0;
+        d->f = 0;
         return;
     }
-
     if(flag == 1)
     {
-        d->f = 0;
         image->negativ_RGB(x1, y1, x2, y2);
         picture->update(image->get_pixmap());
         ui->gridLayout->addWidget(picture);
-        //flag = 0;
+        flag = 0;
         return;
     }
 }

@@ -26,9 +26,11 @@ public:
 
     explicit MyGraphicView(QWidget* parent = nullptr);
     ~MyGraphicView();
+    QColor color;
     void update(QPixmap pixmap);
     void mouseReleaseEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     struct Coordinate coordinate;
 
 signals:

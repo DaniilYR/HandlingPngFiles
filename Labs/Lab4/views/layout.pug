@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title= title
+    style
+      include ../node_modules/jquery-ui-dist/jquery-ui.css
+    script(src="/socket.io/socket.io.js")
+    script(src = "https://code.jquery.com/jquery-1.12.4.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    link(rel="stylesheet" href="/stylesheets/style.css")
+    link(rel="icon" href="/images/favicon.ico" type='image/x-icon')
+    link(rel="shortcut icon" href="/images/favicon.ico" type='image/x-icon')
+  body
+    block content

@@ -1,0 +1,11 @@
+<div class="broker">
+  <h3>{{broker.brokerName}}</h3>
+  <p>Счет: {{broker.money}}</p>
+  <input class="change" [class.ok]="visible === true" [(ngModel)]="broker.money">
+  <p></p>
+  <button class="change" [class.ok]="visible === true" (click)="CloseChange()">ok</button>
+  <p></p>
+  <button (click)="visible = true">Редактировать</button>
+  <p></p>
+  <button (click)="Del()">Удалить</button>
+</div>

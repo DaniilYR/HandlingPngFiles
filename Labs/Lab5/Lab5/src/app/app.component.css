@@ -1,0 +1,48 @@
+.container{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1{
+  text-align: center;
+}
+
+.button{
+  padding: 3px;
+  width: 30%;
+}
+
+.addB{
+  display: none;
+}
+
+.addB.okB{
+  display: inline;
+}
+
+.add{
+  display: none;
+}
+
+.add.ok{
+  display: inline;
+}
+
+#butStock{
+  position: relative;
+  left: 10%;
+  transform: translate(-25%, 0);
+}
+
+#butBroker{
+  position: relative;
+  left: 20%;
+  transform: translate(-50%, 0);
+}
+
+#butSettings{
+  position: relative;
+  left: 30%;
+  transform: translate(-75%, 0);
+}
+

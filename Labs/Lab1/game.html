@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Игра тетрис</title>
+
+    <style type="text/css">
+        body {
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            border: 1px solid white;
+        }
+        h1{
+            font-size: 30px;
+            line-height: 1.2;
+        }
+        h2{
+            font-size: 20px;
+            line-height: 1.1;
+        }
+        h3{
+            font-size: 17px;
+            line-height: 1;
+        }
+        p{
+            font-size: 14px;
+            line-height: 1;
+            color: red;
+        }
+        #container{
+            width: 100%;
+            color: red;
+        }
+        #canvas_div{
+            float: left;
+            width: 25%;
+            min-width: 275px;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        #main_div{
+            float: left;
+            min-width: 300px;
+            width: 30%;
+        }
+        #records_div{
+            float: right;
+            min-width: 250px;
+            width: auto;
+            color: red;
+        }
+        #smallCanvas{
+            position: center;
+            border: 1px solid white;
+            background-color: black;
+        }
+        #button{
+            float: right;
+            min-width: 250px;
+            width: auto;
+            /*padding-top: 30%;*/
+        }
+    </style>
+
+</head>
+<body>
+<div id="container" >
+    <div id="main_div">
+        <h1> Игра Тетрис </h1>
+        <h2 class="info" id="gamer_name">Игрок: </h2>
+        <p class="info" id="tetris_level"></p>
+        <p class="info" id="tetris_point"></p>
+        <label>
+            <p>Следующая фигура</p>
+            <canvas width="150" height="150" id="smallCanvas" ></canvas>
+        </label>
+
+
+        <h3>Клавиши для управления:</h3>
+        <p>Стрелка влево - пермещение фигуры влево</p>
+        <p>Стрелка вправо - перемещение фигуры влево</p>
+        <p>Стрелка вниз - "уронить" фигуру</p>
+        <p>Стрелка вверх - повернуть фигуру</p>
+
+    </div>
+
+    <div id="canvas_div">
+        <canvas width="300" height="600" id="Canvas"></canvas>
+    </div>
+
+</div>
+
+<div id="records_div">
+        <h2 >Таблица рекордов:</h2>
+        <div id="table"></div>
+</div>
+
+<div id="button">
+    <button onclick="window.location='index.html'">На главную</button>
+    <br></br>
+    <button onclick="window.location='game.html'">Начать сначала</button>
+</div>
+
+<script src='game.js'></script>
+
+</body>
+</html>
+

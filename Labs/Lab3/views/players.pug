@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    include header
+    div(class="content")
+        aside(class="modal" id="modal")
+            header
+                h3 Добавить участника
+            section
+                form(id="new_participant", action="#", method="POST")
+                    table
+                        tr
+                            td ФИО:
+                            td
+                                input(type="text" id="newParticipantName")
+                        tr
+                            td Номер карты:
+                            td
+                                input(id="newParticipantCard" type="text" )
+                        tr
+                            td Счет:
+                            td
+                                input(id="newParticipantMoney" type="text")
+            footer
+                div(class="buttons")
+                    div(class="cancel")
+                        a(href='/players' class="buttons" id="cancel") Отмена
+                    div(class="save")
+                        a(href='/players' class="buttons" id="save" form="new_book") Сохранить
+        div(class="buttons")
+            div(class="add")
+                a(href='#modal',class="buttons",id="_add") Добавить участника
+        div( style="clear: both")
+        table(class="m_table" id ="m_table")
+            thead
+                tr
+                    th(datatype="title_name") ФИО
+                    th(datatype="title_card") Номер карты
+                    th(datatype="title_money") Счет в рублях
+            tbody#mbody
+                for participant in participants
+                    tr
+                        td
+                            a(href="/player/"+participant["id"])=participant["name"]
+                        td #{participant["card"]}
+                        td #{participant["money"]}
+            script
+                include ../public/GScripts/players.js
+

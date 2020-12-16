@@ -1,0 +1,78 @@
+ul.hr {
+    margin-top: 20px;
+    padding: 4px; /* Значение полей */
+}
+ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 7px; /* Отступ слева */
+    border: 5px solid darkblue;; /* Рамка вокруг текста */
+    padding: 10px; /* Поля вокруг текста */
+    background-color: darkgray;
+}
+
+body {
+    min-width: 520px;
+}
+.column {
+    margin-top: 5px;
+    width: 200px;
+    float: left;
+    padding-bottom: 100px;
+}
+.portlet {
+    margin: 0 1em 1em 0;
+    padding: 0.3em;
+}
+.portlet-header {
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+    background-color: darkblue;
+    color: aliceblue;
+}
+.portlet-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+}
+.portlet-content {
+    padding: 0.4em;
+}
+.portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+}
+
+.right-panel-wrapper {
+    width: 160px;
+    height: 160px;
+}
+.indBook{
+    height: 100%;
+    width: 100%;
+}
+
+.UpPrice{
+    width: 55%;
+}
+
+#BUpPrice{
+    margin-top: 5px;
+}
+
+#progressbar{
+    width: 30%;
+    /*border-radius: 100px;*/
+    height: 30px;
+}
+
+#l2{
+    margin-top: -20px;
+    display: none;
+}
+
+#start{
+    display: none;
+}

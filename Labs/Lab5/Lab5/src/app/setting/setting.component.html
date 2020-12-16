@@ -1,0 +1,18 @@
+<div class="set">
+  <h3>Время начала</h3>
+    <p>Часы: {{sett.beginTimeH}}</p>
+    <input class="changeS" [class.okS]="visible === true" [(ngModel)]="sett.beginTimeH">
+    <p>Минуты: {{sett.beginTimeM}}</p>
+  <input class="changeS" [class.okS]="visible === true" [(ngModel)]="sett.beginTimeM">
+  <h3>Время окончания</h3>
+    <p>Часы: {{sett.endTimeH}}</p>
+    <input class="changeS" [class.okS]="visible === true" [(ngModel)]="sett.endTimeH">
+    <p>Минуты: {{sett.endTimeM}}</p>
+  <input class="changeS" [class.okS]="visible === true" [(ngModel)]="sett.endTimeM">
+  <h3>Интервал</h3>
+    <p>Минуты: {{sett.interval}}</p>
+  <input class="changeS" [class.okS]="visible === true" [(ngModel)]="sett.interval">
+  <p></p>
+  <button (click)="ChangeSet()" class="changeS" [class.okS]="visible === true">ok</button>
+  <button (click)="visible = true">Редактировать</button>
+</div>

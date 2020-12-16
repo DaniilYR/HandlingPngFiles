@@ -1,0 +1,95 @@
+extends layout
+
+block content
+    include ./header
+    div(class='content')
+        div(class="content")
+            aside(class="modal" id="modalDeletePar")
+                header
+                    h3 Удаление участника аукциона
+                section
+                    form(id="delete_par", action="#", method="post")
+                        p Вы уверены?
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="___cancel") Нет
+                        div(class="save")
+                            a(href='#' class="buttons" id="modalDelete" form="delete_par") Да
+            aside(class="modal" id="modalChangePar")
+                header
+                    h3 Изменить счет
+                section
+                    form(id="change_book", action="#", method="post")
+                        table
+                            tr
+                                td Новый счет:
+                                td
+                                    input(type="text" id="changePartMoney")
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="__cancel") Отмена
+                        div(class="save")
+                            a(href='#' class="buttons" id="__save" form="change_par") Сохранить
+            aside(class="modal" id="modalAddPic")
+                header
+                    h3 Добавить картину
+                section
+                    form(id="add_pic", action="#", method="put")
+                        table
+                            tr
+                                td Название картины
+                                    td
+                                        select#addNewPic
+                                            for pic in pictures
+                                                option #{pic["name"]}
+                            tr
+                                td Максимальная сумма:
+                                td
+                                    input(type="text" id="addPartMoney")
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="____cancel") Отмена
+                        div(class="save")
+                            a(href='#' class="buttons" id="___save" form="add_pic") Сохранить
+            div(class="cardPar")
+                h3(align="center") Информация об участнике аукциона
+                br
+                div(class="buttons")
+                    div(class="deleted")
+                        a(href='#modalDeletePar' class="buttons" id="deleteButton" form="delete_par") Удалить
+                    div(class="change")
+                        a(href='#modalChangePar' class="buttons" id="change" form="change_par") Изменить cчет
+                    div(class="change")
+                        a(href='#modalAddPic' class="buttons" id="addPic" form="add_par") Добавить картину в желания
+                table
+                    tr
+                        td ФИО:
+                        td #{participant["name"]}
+                    tr
+                        td Номер карты:
+                        td #{participant["card"]}
+                    tr
+                        td Счет:
+                        td#money #{participant["money"]}
+                br
+                if (participant["auction"]!="")
+                    h4(align="center") Желаемые картины
+                    table#mtable
+                        thead
+                            tr
+                                th(datatype="title_name") Название картины
+                                th(datatype="title_author") Максимальная сумма
+                        tbody#mbody
+                            for pic in participant["auction"]
+                                tr
+                                for p in pictures
+                                    if(p["name"] == pic["picture"])
+                                        td
+                                            a(href="/painting/" + p["id"])=p["name"]
+                                        td #{pic["maxPrice"]}
+                br
+            script
+                include ../public/GScripts/player.js

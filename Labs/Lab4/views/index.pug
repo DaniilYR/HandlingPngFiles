@@ -1,0 +1,14 @@
+block content
+    link(rel="icon" href="/images/favicon.ico" type='image/x-icon')
+    link(rel="shortcut icon" href="/images/favicon.ico" type='image/x-icon')
+    div
+        div
+            p Welcome to #{title}
+    div(id='input')
+        form(action="/in" method="POST")
+            p
+            label Имя пользователя
+            p
+            input(name = "name"  required)
+            p
+            button(type="submit") Войти

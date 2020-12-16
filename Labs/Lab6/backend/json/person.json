@@ -1,0 +1,22 @@
+[
+  {
+    "id":1,
+    "name":"Daniil",
+    "money":2000000000,
+    "stocks": [0, 10, 20],
+    "ontorg_stocks": [0, 0, 0],
+    "price": [0, 2000, 3000],
+    "ontorg_price": [0, 0, 0],
+    "start_money": 2000000000
+  },
+  {
+    "id":2,
+    "name":"Yoda",
+    "money":6000000,
+    "stocks": [10, 10, 10],
+    "ontorg_stocks": [0, 0, 0],
+    "price": [200, 2000, 1500],
+    "ontorg_price": [0, 0, 0],
+    "start_money": 6000000
+  }
+]

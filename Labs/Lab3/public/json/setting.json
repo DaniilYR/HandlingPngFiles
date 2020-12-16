@@ -1,0 +1,11 @@
+{
+  "myAuc": {
+    "dateBegin": "2018-10-23",
+    "timeBegin": "11:11",
+    "timeout": "15",
+    "interval": "15",
+    "pause": "15",
+    "picName": "Старая мадонна",
+    "id": "auction"
+  }
+}

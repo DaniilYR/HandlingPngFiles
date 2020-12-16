@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    script(src="/javascripts/adminSocket.js")
+    div
+        p Вы зашли как #{title}
+    for user in players
+        div.column
+            div.portlet
+                div.portlet-header #{user.name}
+                div.portlet-content
+                    p(id="cash" + user.id) Счет: #{user.money}
+    p
+    for art in arts
+        if(art.inAuction === true)
+            div.column
+                div.portlet
+                    div(id="AdminPicName" + art.id  ).portlet-header #{art.name}
+                    div.portlet-content
+                        div(class="right-panel-wrapper")
+                            a(href=art.pt target="_blank")
+                                img.image(src=art.pt class="indBook" href=art.pt)
+                        p(id="AdminWidower" + art.id) Владелец: -
+                        p(id='AdminPrice' + art.id) Цена: #{art.beginning_price}
+    div( class='Current' id="new")

@@ -1,0 +1,140 @@
+extends layout
+
+block content
+    include ./header
+    div(class='content')
+        div(class="content")
+            aside(class="modal" id="modalAddPic")
+                header
+                    h3 Добавить в аукцион
+                section
+                    form(id="addPicToAuc", action="#", method="GET")
+                        table
+                            tr
+                                td Начальная цена:
+                                td
+                                    input(type="text" id="changePrice")
+                            tr
+                                td Минимальный шаг:
+                                td
+                                    input(type="text" id="changeMin")
+                            tr
+                                td Максимальный шаг:
+                                td
+                                    input(type="text" id="changeMax")
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="cancel") Отмена
+                        div(class="save")
+                            a(href='#' class="buttons" id="save" form="addPicToAuc") Сохранить
+            aside(class="modal" id="modalRemovePic")
+                header
+                    h3 Удаление картины из аукциона
+                section
+                    form(id="removePicFromAuc", action="#", method="GET")
+                        p Вы уверены?
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="cancelAuc") Нет
+                        div(class="save")
+                            a(href='#' class="buttons" id="removePicButton" form="modalRemovePic") Да
+            aside(class="modal" id="modalDeletePic")
+                header
+                    h3 Удаление картины
+                section
+                    form(id="delete_pic", action="#", method="delete")
+                        p Вы уверены?
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="___cancel") Нет
+                        div(class="save")
+                            a(href='#' class="buttons" id="modalDelete" form="delete_pic") Да
+            aside(class="modal" id="modalChangePic")
+                header
+                    h3 Изменить картину
+                section
+                    form(id="change_pic", action="/changePic", method="GET")
+                        table
+                            tr
+                                td Название:
+                                td
+                                    input(type="text" id="changeName" value= picture["name"])
+                            tr
+                                td Автор:
+                                td
+                                    input(type="text" id="changeAuthor" value= picture["author"])
+                            tr
+                                td Год:
+                                td
+                                    input(type="text" id="changeYear" value= picture["date"])
+                            tr
+                                if (picture["inAuction"] === true)
+                                    tr
+                                        td Начальная цена:
+                                        td
+                                            input(type="number" id="changePrice_" value= picture["beginning_price"] min=0)
+                                    tr
+                                        td Минимальный шаг:
+                                        td
+                                            input(type="number" id="changeMin_" value= picture["min_step"] min=0)
+                                    tr
+                                        td Максимальный шаг:
+                                        td
+                                            input(type="number" id="changeMax_" value= picture["max_step"] min=0)
+                footer
+                    div(class="buttons")
+                        div(class="cancel")
+                            a(href='#' class="buttons" id="__cancel") Отмена
+                        div(class="save")
+                            a(href='#' class="buttons" id="__save" form="change_pic") Сохранить
+            div(class='page-wrapper')
+                div(class='mcontent-wrapper')
+                    div(class="cardPic")
+                        h3(align="center") Информация о картине
+                        table#tab
+                            tr
+                                td Имя:
+                                td#td1 #{picture["name"]}
+                            tr
+                                td Автор:
+                                td#td2 #{picture["author"]}
+                            tr
+                                td Год:
+                                td#td3 #{picture["date"]}
+                            tr
+                            if (picture["inAuction"] === true)
+                                tr#tr5
+                                    td В аукционе?
+                                    td#td5 Да
+                                tr#tr6
+                                    td Начальная цена
+                                    td#td6 #{picture["beginning_price"]}
+                                tr#tr7
+                                    td Мин. шаг
+                                    td#td7 #{picture["min_step"]}
+                                tr#tr8
+                                    td Макс. шаг
+                                    td#td8 #{picture["max_step"]}
+                        if ((picture["inAuction"] === false))
+                            div(class="buttons")
+                                div(class="deleted")
+                                    a(href='#modalDeletePic' class="buttons" id="deleteButton" form="delete_pic") Удалить
+                                div(class="change")
+                                    a(href='#modalChangePic' class="buttons" id="change" form="change_pic") Изменить картину
+                                div(class="deleted")
+                                    a(href='#modalAddPic' class="buttons" id="addAuction" form="addPicToAuc") Поставить в аукцион
+                        else
+                            div(class="buttons")
+                                div(class="deleted")
+                                    a(href='#modalDeletePic' class="buttons" id="deleteButton" form="delete_pic") Удалить
+                                div(class="change")
+                                    a(href='#modalChangePic' class="buttons" id="change" form="change_pic") Изменить картину
+                                div(class="deleted")
+                                    a(href='#modalRemovePic' class="buttons" id="addAuction" form="removePicFromAuc") Удалить из аукциона
+                div(class="right-panel-wrapper")
+                    img.image(src=picture["pt"] class="indBook")
+            script
+                include ../public/GScripts/art.js

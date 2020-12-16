@@ -1,0 +1,49 @@
+<div class = container>
+  <h1>Биржа акций</h1>
+  <hr>
+  <button class="button" id="butStock" (click)="OpenStock()" bold>Акции</button>
+  <button class="button" id="butBroker" (click)="OpenBroker()" >Брокеры</button>
+  <button class="button" id="butSettings" (click)="OpenSettings()" bold >Натройки</button>
+  <hr>
+  <div *ngIf="open">
+    <button (click)="OpenAddStock()">Add</button>
+    <div id="addStock" class="add" [class.ok]="visible === true">
+      <p>Компания</p>
+      <input id="company" value="" [(ngModel)]="company">
+      <p>Количество акций</p>
+      <input id="count" value="" [(ngModel)]="count" >
+      <p>Цена за еденицу</p>
+      <input id="price" value="" [(ngModel)]="price" >
+      <p>Максимальное значение для изменения</p>
+      <input id="maxCount" value="" [(ngModel)]="maxCount" >
+      <p></p>
+      <button (click)="CloseAddStock()">Ok</button>
+      <button (click)="Close()">Закрыть</button>
+    </div>
+    <app-stock
+      *ngFor="let iterstock of stocks"
+      [stock]="iterstock"
+    ></app-stock>
+  </div>
+  <div *ngIf="openBroker">
+    <button (click)="visibleB = true">Add</button>
+    <div class="addB" [class.okB]="visibleB === true">
+      <p>Имя</p>
+      <input [(ngModel)]="brokerName">
+      <p>Счет</p>
+      <input [(ngModel)]="money">
+      <button (click)="CloseAddBroker()">Ok</button>
+      <button (click)="CloseB()">Закрыть</button>
+    </div>
+    <app-broker
+      *ngFor="let iterbroker of brokers"
+      [broker]="iterbroker"
+    ></app-broker>
+  </div>
+  <div *ngIf="openSettings">
+    <app-setting
+      *ngFor="let iterSet of settings"
+      [sett]="iterSet"
+     ></app-setting>
+  </div>
+</div>

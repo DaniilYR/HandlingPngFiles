@@ -1,0 +1,13 @@
+.set{
+  padding: .3rem 1rem;
+  border: 2px solid grey;
+  margin-bottom: 1rem;
+}
+
+.changeS{
+  display: none;
+}
+
+.changeS.okS{
+  display: inline;
+}

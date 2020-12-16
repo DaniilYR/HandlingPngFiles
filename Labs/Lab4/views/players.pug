@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    script(src="/javascripts/socket.js")
+    script(src="/javascripts/players.js")
+    for user in players
+        div.column
+            div.portlet
+                div.portlet-header #{user.name}
+                div.portlet-content
+                    p Счет: #{user.money}
+                    p Картины: #{user.auction}

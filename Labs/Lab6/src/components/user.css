@@ -1,0 +1,81 @@
+
+#change_button{
+    width: 20px;
+    height: 20px;
+}
+
+.User{
+    width: 105%;
+    float: left;
+}
+
+.count{
+    background-color: transparent;
+    border-bottom: 2px;
+    width: 80px;
+}
+
+#sell0{
+    color: red;
+}
+
+.butDealtrue{
+    display: inline;
+}
+
+.butDealfalse{
+    display: none;
+}
+
+.two ul {
+    padding: 1em 0;
+    background-color: grey;
+}
+.two li {
+    padding: 1em;
+}
+
+.two li {
+    display: inline;
+}
+
+.stocks{
+    float: left;
+}
+
+#tt{
+    /*color: red;*/
+    width: 200px;
+    float: left;
+}
+
+
+.UDeal{
+    float: left;
+    width: 250px;
+    height: 200px;
+    margin: 20px;
+    border-style: dotted;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.UDeal tr{
+    display: table;
+}
+
+
+.Ubroker {
+    float: left;
+    display: inline-block;
+    text-align: center;
+    list-style: none;
+    position: relative;
+    width: 450px;
+    height: 200px;
+    margin: 20px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    /*background-color: #eafff2;*/
+    border-style: dotted;
+}

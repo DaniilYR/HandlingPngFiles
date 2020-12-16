@@ -1,0 +1,82 @@
+    extends layout
+
+    block content
+        script(src="/javascripts/ajax.js")
+        div
+            table(id="bookTable")
+                tr
+                    th(style="padding: 15px") Книга:
+                    td(style="padding: 15px") #{name}
+                tr
+                    th(style="padding: 15px") Автор:
+                    td(style="padding: 15px") #{author}
+                tr
+                    th(style="padding: 15px") Год выпуска:
+                    td(style="padding: 15px") #{date}
+                tr
+                    th(style="padding: 15px") В наличии:
+                    td(style="padding: 15px") #{in_library}
+                tr
+                    th(style="padding: 15px") Читатель
+                    td(style="padding: 15px") #{person}
+                tr
+                    th(style="padding: 15px") Дата возврата:
+                    td(style="padding: 15px") #{date_return}
+                    -var book_id = ID
+
+        div(id="getBook")
+            p
+            if in_library === "нет"
+                button(disabled) Взять книгу
+            else
+                button(onclick="document.getElementById('take').style.display = \"block\"" ) Взять книгу
+                div(id= "take" class="modal" style="position: fixed")
+                    div(class="modal-content")
+                        div(class="modal-header")
+                            span(class="button" onclick="document.getElementById('take').style.display = \"none\"", style="float: right") &#10006;
+                        h2 Читатель
+                        div(class="modal-body")
+                            form(action="read/" + book_id method="POST")
+                                p ФИО читателя
+                                input(required name="name")
+                                p Дата возврата
+                                input(required type="date" name="date_return")
+                                p
+                                button(type="submit") Взять
+                        div(class="modal-footer")
+
+        div(id="returnBook")
+            p
+            if in_library === "нет"
+                form(action="return/" + book_id method="POST")
+                    button(type="submit") Вернуть книгу
+            else
+                button(type="submit" disabled) Вернуть книгу
+        div(id="changeBook")
+            p
+            button(onclick="document.getElementById('change').style.display = \"block\"" ) Редактировать
+            div(id= "change" class="modal")
+                div(class="modal-content")
+                    div(class="modal-header")
+                        span(class="close" onclick="document.getElementById('change').style.display = \"none\"", style="float: right") &#10006;
+                    div(class="modal-body")
+                        form(action="change/" + book_id method="POST")
+                            table
+                                tr
+                                    th Название
+                                    th Автор
+                                    th Дата издания
+                                tr
+                                    th
+                                        input(name="name" )
+                                    th
+                                        input(name="author" )
+                                    th
+                                        input(name="date" type="date" )
+                            p
+                            button(type="submit") Изменить
+                    div(class="modal-footer")
+        div(id="home")
+            p
+            form(action="home" method="POST")
+                button(type="submit") Назад

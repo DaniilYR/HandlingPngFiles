@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    script(src='/javascripts/auction.js')
+    script(src="/javascripts/socket.js")
+    lable(id='l1') Изучение товара:
+    div(id="progressbar").ui-progressbar
+    p
+    for pl in players
+        if(pl.name === user)
+            div(id="cash") Текущей счет: #{pl.money}
+    for art in arts
+        if(art.inAuction === true)
+            div.column
+                div.portlet
+                    div(id="PicName"+art.id  ).portlet-header #{art.name}
+                    div.portlet-content
+                        div(class="right-panel-wrapper")
+                            a(href=art.pt target="_blank")
+                                img.image(src=art.pt class="indBook" href=art.pt)
+                        p(id="widower"+art.id) Владелец: -
+                        p(id='price'+art.id) Цена: #{art.beginning_price}
+                        p(id='minMax' + art.id) Min / Max: #{art.min_step} / #{art.max_step}
+                        div
+                            input(class='UpPrice' type="number" id="UpPrice"+art.id min=art.min_step value=art.min_step)
+                            button(class='BUpPrice' id="BUpPrice "+art.id onclick="Bid(this)") Ставка

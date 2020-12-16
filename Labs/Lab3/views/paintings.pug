@@ -1,0 +1,67 @@
+extends layout
+block content
+    include ./header
+    div(class="content")
+        aside(class="modal" id="modal")
+            header
+                h3 Добавить картину
+            section
+                form(id="new_pic")
+                    table
+                        tr
+                            td Название:
+                            td
+                                input(type="text" id="newPicName" value="")
+                        tr
+                            td Автор:
+                            td
+                                input(id="newPicAuthor" type="text" value="")
+                        tr
+                            td Год создания:
+                            td
+                                input(id="newPicDate" type="text" value="")
+                        tr
+                            td Ссылка на картинку:
+                            td
+                                input(id="newPicImage" type="text" value="")
+            footer
+                div(class="buttons")
+                    div(class="cancel")
+                        a(href='/' class="buttons" id="cancel") Отмена
+                    div(class="save")
+                        a(href='/' class="buttons" id="save" form="new_pic") Сохранить
+        div(class="buttons")
+            div(class="add")
+                a(href='#modal',class="buttons",id="_add") Добавить картину
+        div( style="clear: both")
+        table(class="m_table" id ="m_table")
+            thead
+                tr
+                    th(datatype="title_name") Название
+                    th(datatype="title_author") Автор
+                    th(datatype="title_money") Год
+                    th(datatype="title_in_auction") В аукционе?
+                    th(datatype="title_begin_price") Начальная цена
+                    th(datatype="title_min_step") Мин. шаг
+                    th(datatype="title_max_step") Макс. шаг
+            tbody#mbody
+                for picture in pictures
+                    tr
+                        td
+                            a(href="/painting/"+picture["id"])=picture["name"]
+                        td #{picture["author"]}
+                        td #{picture["date"]}
+                        if (picture["inAuction"] == false)
+                            td Нет
+                            td -
+                            td -
+                            td -
+                        else
+                            td Да
+                            td #{picture["beginning_price"]}
+                            td #{picture["min_step"]}
+                            td #{picture["max_step"]}
+            script
+                include ../public/GScripts/arts.js
+
+

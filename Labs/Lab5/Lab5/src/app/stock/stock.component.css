@@ -1,0 +1,16 @@
+.stock{
+  padding: .3rem 1rem;
+  border: 2px solid grey;
+  margin-bottom: 1rem;
+}
+
+h3{
+  text-align: center;
+}
+
+.change{
+  display: none;
+}
+.change.ok{
+  display: inline;
+}

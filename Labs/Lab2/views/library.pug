@@ -1,0 +1,57 @@
+extends layout
+
+block content
+    script(src="../javascripts/ajax.js")
+    h1(id="titleLib") Книжный шкаф:
+    div
+        table(id="tableLib", class="w3-table-all ")
+            tr
+                th Номер
+                th Название
+                th Автор
+                th Год выпуска
+                th Наличие
+                th Дата возврата
+                th Действие
+            for item in books
+                tr(id = item.id)
+                    th
+                        a(href = "book/" + item.id, style="color: black") #{item.id}
+                    th
+                        a(href = "book/" + item.id, style="color: black") #{item.name}
+                    th #{item.author}
+                    th #{item.date}
+                    th #{item.in_library}
+                    th #{item.date_return}
+                    form(action="del/" + item.id method ="POST")
+                        th
+                            button &times
+                    - last = item.id
+            tr(id = last + 1)
+                form(action="new" method="POST")
+                    th
+                    th
+                        input(required name="name")
+                    th
+                        input(required name="author")
+                    th
+                        input(required type="date" name="date")
+                    th
+                    th
+                    th
+                        button +
+    p
+    div(id="filterDiv")
+        div
+            p Фильтр:
+        div
+            p
+            button(onclick="allBooks(this)" id="allBooks") Все книги
+        div
+            p
+                button(onclick='inLib(this)' id="inLib" ) Книги в наличии
+        div
+            p
+                button(onclick='dateReturn(this)' id="dateReturn" ) Просрочено
+
+

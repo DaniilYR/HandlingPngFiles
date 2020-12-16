@@ -1,0 +1,70 @@
+extends layout
+
+block content
+    include ./header
+    div(class='content')
+        aside(class="modal" id="auction")
+            header
+                h3 Изменить параметры аукциона
+            section
+                form(id="delete_par_", action="#", method="post")
+                    table
+                        tr
+                            td Дата начала:
+                            td
+                                input(type="date" id="dateBegin" value = auction["dateBegin"])
+                        tr
+                            td Время начала:
+                            td
+                                input(type="time" id="timeBegin" value = auction["timeBegin"])
+                        tr
+                            td Таймаут продажи картины (мин.):
+                            td
+                                input(type="number" id="timeout" value = auction["timeout"])
+                        tr
+                            td Интервал времени отсчета (мин.):
+                            td
+                                input(type="number" id="interval" value = auction["interval"])
+                        tr
+                            td Пауза (мин.):
+                            td
+                                input(type="number" id="pause" value = auction["pause"])
+                        tr
+                            td Название картины
+                                td
+                                    select#addNewPic
+                                        for pic in pictures
+                                            if (pic["inAuction"] == true)
+                                                option #{pic["name"]}
+            footer
+                div(class="buttons" align="center")
+                    a(class="buttons" id="save" href="#modalSave" form="delete_par") Сохранить
+        div(class='cardBook')
+            h4(align="center") Настройки аукциона
+            table
+                tr
+                    td Дата начала:
+                    td#td1 #{auction["dateBegin"]}
+
+                tr
+                    td Время начала:
+                    td#td2 #{auction["timeBegin"]}
+
+                tr
+                    td Таймаут продажи картины (мин.):
+                    td#td3 #{auction["timeout"]}
+                tr
+                    td Интервал времени отсчета (мин.):
+                    td#td4 #{auction["interval"]}
+                tr
+                    td Пауза (мин.):
+                    td#td5 #{auction["pause"]}
+                tr
+                    td Картина:
+                    td#td6 #{auction["picName"]}
+            div(class="buttons")
+                div(class="add")
+                    a(href='#auction',class="buttons",id="_add" form="delete_par_") Изменить
+        script
+            include ../public/GScripts/auctionSettings.js
+

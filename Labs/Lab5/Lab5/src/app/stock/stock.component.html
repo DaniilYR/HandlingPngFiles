@@ -1,0 +1,16 @@
+<div class="stock">
+  <h3>{{ stock.title }}</h3>
+<!--  <input id="title" class="change" [class.ok]="visible === true" [(ngModel)]="stock.title">-->
+  <p>Цена за 1: {{ stock.price }}</p>
+  <input class="change" [class.ok]="visible === true" [(ngModel)]="stock.price">
+  <p>Количество акций: {{ stock.count }}</p>
+  <input class="change" [class.ok]="visible === true" [(ngModel)]="stock.count">
+  <p>Закон распределения: Нормальный</p>
+  <p>Максимальное значение для изменения: {{ stock.maxCount }}</p>
+  <input class="change" [class.ok]="visible === true" [(ngModel)]="stock.maxCount">
+  <p></p>
+  <button class="change" (click)="CloseChange()" [class.ok]="visible === true">Ok</button>
+  <button (click)="OpenChange()">Редактировать</button>
+  <p></p>
+  <button (click)="Del()">Удалить</button>
+</div>
